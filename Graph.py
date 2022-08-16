@@ -13,9 +13,9 @@ class Node():
         self.value = value
         self.name = name
     def __str__(self) -> str:
-        return f"{self.name}[{self.val}]"
+        return f"{self.name}[{self.value}]"
     def __repr__(self) -> str:
-        return f"{self.name}[{self.val}]"
+        return f"{self.name}[{self.value}]"
 
 class Graph():
     def __init__(self, directed=True) -> None:
@@ -259,8 +259,29 @@ class Graph():
         
         return distance
 
+    def BFS_shortest_path(self, start, end):
+        def _backtrace(parent, start, end):
+            path = [end]
+            while path[-1] != start:
+                path.append(parent[path[-1]])
+            path.reverse()
+            return path
 
-        
+        parent = {}
+        queue = []
+        queue.append(start)
+        parent[start] = None
+        while queue:
+            node = queue.pop(0)
+            if node == end:
+                return _backtrace(parent, start, end)
+            for neighbor in self._adjList[node]:
+                if neighbor not in parent:
+                    parent[neighbor] = node 
+                    queue.append(neighbor)
+
+
+                
 
 
 

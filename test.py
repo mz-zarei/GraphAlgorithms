@@ -18,10 +18,11 @@ graph.add_node(e)
 # add edges to graph
 graph.add_edge(a,b, 1)
 graph.add_edge(b,c, 2)
-graph.add_edge(a,c, 3)
+graph.add_edge(a,c, 4)
 
-graph.add_edge(c,d, 2)
-graph.add_edge(d,e, 4)
+graph.add_edge(c,d, 1)
+graph.add_edge(c,e, 3)
+graph.add_edge(d,e, 1)
 
 # print the graph
 graph.print_graph()
@@ -44,9 +45,10 @@ print(graph.get_scc_num())
 print(graph.has_cycle())
 
 # Return MST
-print(graph.Kruskal_MST())
+# print(graph.Kruskal_MST())
 
 # Return distance from single source to all nodes
 print(graph.BellmanFord(a))
 print(graph.modified_BellmanFord(a))
 print(graph.Dijkstra(a))
+print(graph.BFS_shortest_path(a,e))
